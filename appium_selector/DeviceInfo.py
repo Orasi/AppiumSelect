@@ -14,11 +14,8 @@ class DeviceInfo:
         self.root = tree.getroot()
 
     def loadDeviceXML(self):
-        if 'APPIUMDEVICES' in os.environ:
-            devicePath = os.environ.get('APPIUMDEVICES')
-        else:
-            raise EnvironmentError('No APPIUMDEVICES environment variable set.  Can not find Devices.xml')
-
+        projectFolder = GetConfig("ProjectFolder")
+        devicePath = projectFolder + "/Devices.xml"
         if not os.path.exists(devicePath):
             open(devicePath, 'w').close()
 

@@ -2,10 +2,15 @@ import os
 from bs4 import BeautifulSoup
 
 def GetConfig(configName):
-    if 'APPIUMCONFIG' in os.environ:
-        configPath = os.environ.get('APPIUMCONFIG')
+    if 'PROJECTFOLDER' in os.environ:
+        configPath = os.environ.get('PROJECTFOLDER')
+        if configPath[-1] == '/':
+            configPath = configPath[:-1]
     else:
-        raise EnvironmentError('No APPIUMCONFIG environment variable set.  Can not find Config.xml')
+        raise EnvironmentError('No PROJECTFOLDER environment variable set.  Can not find Config.xml')
+
+    if configName.lower() == 'projectfolder':
+        return configPath
 
     if os.path.exists(configPath):
         config = open(configPath, 'r')
