@@ -1,6 +1,6 @@
 from tkinter import *
-from DeviceSelector.DeviceInfo import DeviceInfo
-from DeviceSelector.Config import GetConfig
+from appium_selector.DeviceInfo import DeviceInfo
+from appium_selector.Config import GetConfig
 import sys
 
 import os

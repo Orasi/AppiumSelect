@@ -1,13 +1,25 @@
+import os
 import xml.etree.ElementTree as ET
 import requests
-from Helpers.FilePath import get_full_path
-from Helpers.Config import GetConfig
+from appium_selector.Config import GetConfig
 from bs4 import BeautifulSoup
 
 class DeviceInfo:
+
     def __init__(self):
-        tree = ET.parse(get_full_path("Devices.xml"))
+        tree = self.loadDeviceXML()
         self.root = tree.getroot()
+
+    def loadDeviceXML(self):
+        if 'APPIUMDEVICES' in os.environ:
+            devicePath = os.environ.get('APPIUMDEVICES')
+        else:
+            raise EnvironmentError('No APPIUMDEVICES environment variable set.  Can not find Devices.xml')
+
+        if not os.path.exists(devicePath):
+            open(devicePath, 'w').close()
+
+        return ET.parse(devicePath)
 
     def getDevice(self, info):
 
