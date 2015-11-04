@@ -1,9 +1,10 @@
 from tkinter import *
-from appium_selector.DeviceInfo import DeviceInfo
-from appium_selector.Config import GetConfig
 import sys
-
 import os
+
+from appium_selector.Helpers.DeviceInfo import DeviceInfo
+from appium_selector.Helpers.Config import GetConfig
+
 
 class DeviceSelector:
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -27,7 +28,7 @@ class DeviceSelector:
         #Add Mustard Checkbox and Instructions Label
         frame = Frame(win)
         self.mustard = GetConfig('SKIP_MUSTARD').lower() == 'false'
-        c = Checkbutton(frame, text="Add Mustard?", command=self.toggleMustard)
+        c = Checkbutton(frame, text="Add Mustard?", command=self._toggleMustard)
         if self.mustard:
             c.select()
         c.pack(side=RIGHT)
@@ -61,9 +62,9 @@ class DeviceSelector:
 
         # Create Buttons
         Button(self.frame, text="Cancel", fg="red", command=self.frame.quit, width=50, height=5).pack(side=RIGHT, fill=Y)
-        Button(self.frame, text="Run Test", fg="green", command=self.saveDevices, width=50).pack(side=LEFT, fill=Y)
+        Button(self.frame, text="Run Test", fg="green", command=self._saveDevices, width=50).pack(side=LEFT, fill=Y)
 
-    def toggleMustard(self):
+    def _toggleMustard(self):
         self.mustard = not self.mustard
 
     def getDevice(self):
@@ -71,7 +72,7 @@ class DeviceSelector:
         self.root.destroy()
         return self.devices
 
-    def saveDevices(self):
+    def _saveDevices(self):
         info = DeviceInfo()
         devices = self.listbox.curselection()
 
@@ -79,12 +80,12 @@ class DeviceSelector:
         for device in devices:
             deviceString = self.listbox.get(device)
             deviceInfo = info.getDevice([deviceString.split(' -- ')[1], deviceString.split(' -- ')[0]] )
-            output.append(self.createDesiredCapabilites(deviceInfo))
+            output.append(self._createDesiredCapabilites(deviceInfo))
 
         self.frame.quit()
         self.devices = output
 
-    def createDesiredCapabilites(self, device):
+    def _createDesiredCapabilites(self, device):
         caps = {}
         options = {}
         if device['udid'] == 'SauceLabs':

@@ -1,8 +1,11 @@
 import os
 import xml.etree.ElementTree as ET
+
 import requests
-from appium_selector.Config import GetConfig
 from bs4 import BeautifulSoup
+
+from appium_selector.Helpers.Config import GetConfig
+
 
 class DeviceInfo:
 
