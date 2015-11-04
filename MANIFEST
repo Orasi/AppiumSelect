@@ -2,5 +2,8 @@
 README.txt
 setup.cfg
 setup.py
+appium_selector/Config.py
+appium_selector/DeviceInfo.py
 appium_selector/DeviceSelector.py
+appium_selector/FilePath.py
 appium_selector/__init__.py

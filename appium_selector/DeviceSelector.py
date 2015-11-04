@@ -2,7 +2,7 @@ from tkinter import *
 import sys
 import os
 
-from appium_selector.Helpers.DeviceInfo import DeviceInfo
+from appium_selector import DeviceInfo
 from appium_selector.Config import GetConfig
 
 
