@@ -3,7 +3,7 @@ import sys
 import os
 
 from appium_selector.Helpers.DeviceInfo import DeviceInfo
-from appium_selector.Helpers.Config import GetConfig
+from appium_selector.Config import GetConfig
 
 
 class DeviceSelector:

@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 import requests
 from bs4 import BeautifulSoup
 
-from appium_selector.Helpers.Config import GetConfig
+from appium_selector.Config import GetConfig
 
 
 class DeviceInfo:
