@@ -13,9 +13,9 @@ def GetConfig(configName):
         return configPath
 
     if os.path.exists(configPath):
-        config = open(configPath, 'r')
+        config = open(configPath + '/Config.xml', 'r')
     else:
-        config = open(configPath, 'w')
+        config = open(configPath + '/Config.xml', 'w')
 
     soup = BeautifulSoup(config, 'xml')
     node = soup.find(configName)
