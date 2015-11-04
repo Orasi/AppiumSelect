@@ -1,6 +1,5 @@
 import os
 from bs4 import BeautifulSoup
-from appium_selector.FilePath import get_full_path
 
 def GetConfig(configName):
     if 'APPIUMCONFIG' in os.environ:
