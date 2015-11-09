@@ -132,8 +132,13 @@ class DeviceSelector:
         output = []
         for device in devices:
             deviceString = self.listbox.get(device)
-            deviceInfo = info.getDevice([deviceString.split(' -- ')[1], deviceString.split(' -- ')[0]] )
-            output.append(self._createDesiredCapabilites(deviceInfo))
+            if 'Desktop' in deviceString:
+                d = deviceString.split(' -- ')
+                deviceInfo = info.getDevice(['', d[1] + '<|>' + d[2] + '<|>' + d[3]])
+                output.append(self._createDesiredCapabilites(deviceInfo))
+            else:
+                deviceInfo = info.getDevice([deviceString.split(' -- ')[1], deviceString.split(' -- ')[0]] )
+                output.append(self._createDesiredCapabilites(deviceInfo))
 
         self.frame.quit()
         self.devices = output
