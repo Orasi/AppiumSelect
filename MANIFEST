@@ -7,4 +7,3 @@ appium_selector/DeviceInfo.py
 appium_selector/DeviceSelector.py
 appium_selector/FilePath.py
 appium_selector/__init__.py
-appium_selector/runner.ico

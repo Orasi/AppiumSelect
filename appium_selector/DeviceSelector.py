@@ -172,6 +172,7 @@ class DeviceSelector:
 
             caps['platformName'] = device['manufacturer']
             caps['browserName'] = device['udid']
+            caps['deviceName'] = "model"
         else:
             options['provider'] = 'grid'
             options['manufacturer'] = device['manufacturer']
