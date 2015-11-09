@@ -173,7 +173,7 @@ class DeviceSelector:
             options['model'] = device['model']
             options['osv'] = device['osv']
             options['mustard'] = self.mustard
-
+            caps['udid'] = device['udid']
             caps['platformName'] = device['manufacturer']
             caps['browserName'] = device['udid']
             caps['deviceName'] = "model"
