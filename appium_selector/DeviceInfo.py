@@ -24,7 +24,7 @@ class DeviceInfo:
 
     def getDevice(self, info):
 
-        if '<|>' in info[1]:
+        if '<|>' in info[1] or 'Desktop' in info[1]:
             return self.getDesktopDevice(info)
         else:
             udid = info[0]
