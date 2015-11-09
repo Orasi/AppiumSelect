@@ -1,0 +1,115 @@
+<devices>
+
+    <device>
+        <udid>0b17d319</udid>
+        <deviceName>GALAXY-S4MINI-01</deviceName>
+        <manufacturer>Samsung</manufacturer>
+        <model>Galaxy S4 Mini</model>
+        <osv>4.4.2</osv>
+    </device>
+
+    <device>
+        <udid>LGLS98087ced8ca</udid>
+        <deviceName>LG-OPTIMUSG2-01</deviceName>
+        <manufacturer>LG</manufacturer>
+        <model>Optimus G2</model>
+        <osv>4.4.2</osv>
+    </device>
+
+    <device>
+        <udid>0607508fd534e322</udid>
+        <deviceName>LG-OPTIMUSGFLEX-01</deviceName>
+        <manufacturer>LG</manufacturer>
+        <model>Optimus G-Flex</model>
+        <osv>4.4.2</osv>
+    </device>
+
+    <device>
+        <udid>022317e90911a096</udid>
+        <deviceName>LG-NEXUS5-02</deviceName>
+        <manufacturer>LG</manufacturer>
+        <model>Nexus 5</model>
+        <osv>4.4.2</osv>
+    </device>
+
+    <device>
+        <udid>a91aa74e</udid>
+        <deviceName>GALAXY-S3-01</deviceName>
+        <manufacturer>Samsung</manufacturer>
+        <model>Galaxy S3</model>
+        <osv>4.3</osv>
+    </device>
+
+    <device>
+        <udid>FA4A7SF00129</udid>
+        <deviceName>HTC-ONEM8-01</deviceName>
+        <manufacturer>HTC</manufacturer>
+        <model>One M8</model>
+        <osv>4.4.3</osv>
+    </device>
+
+    <device>
+        <udid>R32CB03RC4B</udid>
+        <deviceName>NEXUS-10-01</deviceName>
+        <manufacturer>Google</manufacturer>
+        <model>Nexus 10</model>
+        <osv>4.3</osv>
+    </device>
+
+    <device>
+        <udid>FA456SF03565</udid>
+        <deviceName>Matts HTC One</deviceName>
+        <manufacturer>HTC</manufacturer>
+        <model>One M8</model>
+        <osv>5.0</osv>
+    </device>
+
+    <device>
+        <udid>03157df38b803037</udid>
+        <deviceName>GALAXY-S6-01</deviceName>
+        <manufacturer>Samsung</manufacturer>
+        <model>Galaxy S6</model>
+        <osv>5.0.2</osv>
+    </device>
+
+    <device>
+        <udid>42f7b21b7663af11</udid>
+        <deviceName>GALAXY-NOTE2-02</deviceName>
+        <manufacturer>Samsung</manufacturer>
+        <model>Galaxy Note 2</model>
+        <osv>4.1</osv>
+    </device>
+
+    <device>
+        <udid>42f75402f2ce9fd3</udid>
+        <deviceName>GALAXY-NOTE-01</deviceName>
+        <manufacturer>Samsung</manufacturer>
+        <model>Galaxy Note</model>
+        <osv>4.1</osv>
+    </device>
+
+    <device>
+        <udid>877cfdb7ad60d5b78d8aa02c9e90b0e929891c91</udid>
+        <deviceName>IPAD-AIR2-01</deviceName>
+        <manufacturer>Apple</manufacturer>
+        <model>iPad Air2</model>
+        <osv>8.1</osv>
+    </device>
+
+    <device>
+        <udid>d127b18c586305863103c79c4e112a01bde764e3</udid>
+        <deviceName>IPHONE-6PLUS-02</deviceName>
+        <manufacturer>Apple</manufacturer>
+        <model>iPhone 6Plus</model>
+        <osv>8.1</osv>
+    </device>
+
+    <device>
+        <udid>CB5A1VLU0Y</udid>
+        <deviceName>SONY-XPERIA Z-01</deviceName>
+        <manufacturer>Samsung</manufacturer>
+        <model>Sony Xperia Z</model>
+        <osv>5.1.1</osv>
+    </device>
+
+</devices>

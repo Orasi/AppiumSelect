@@ -1,0 +1,15 @@
+<CONFIG>
+    <GRID_URL>http://10.238.242.145:4444</GRID_URL>
+
+    <MUSTARD_URL>http://mustard.orasi.com/results</MUSTARD_URL>
+    <MUSTARD_KEY>c73fbfed815904a032a5cec113bfe85f</MUSTARD_KEY>
+    <SKIP_MUSTARD>False</SKIP_MUSTARD>
+
+    <LOCAL_APPIUM_URL>http://127.0.0.1:4723/wd/hub</LOCAL_APPIUM_URL>
+
+    <SAUCE_USERNAME>MattWatson</SAUCE_USERNAME>
+    <SAUCE_ACCESS>8ec13fcb-fae2-4ce5-87cb-bfdd31a55f43</SAUCE_ACCESS>
+
+    <ANDROID_BUNDLE_ID></ANDROID_BUNDLE_ID>
+    <IOS_BUNDLE_ID>com.clearleap.projectX-Calabash</IOS_BUNDLE_ID>
+</CONFIG>

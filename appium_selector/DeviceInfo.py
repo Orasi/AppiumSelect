@@ -1,4 +1,5 @@
 import os
+import re
 import xml.etree.ElementTree as ET
 
 import requests
@@ -9,7 +10,8 @@ from appium_selector.Config import GetConfig
 
 class DeviceInfo:
 
-    def __init__(self):
+    def __init__(self, platform='mobile'):
+        self.platform = platform
         tree = self.loadDeviceXML()
         self.root = tree.getroot()
 
@@ -23,40 +25,75 @@ class DeviceInfo:
 
     def getDevice(self, info):
 
-        udid = info[0]
-        platform = info[1]
+        if '<|>' in info[1]:
+            return self.getDesktopDevice(info)
+        else:
+            udid = info[0]
+            platform = info[1]
 
-        deviceNode = self.root.findall(".//device[udid='" + udid + "']")
-        try:
-            device = {}
-            device['udid'] = deviceNode[0].find('udid').text
-            device['platform'] = platform
-            device['name'] = deviceNode[0].find('deviceName').text
-            device['manufacturer'] = deviceNode[0].find('manufacturer').text
-            device['model'] = deviceNode[0].find('model').text
-            device['osv'] = deviceNode[0].find('osv').text
-            return device
-        except:
-            device = {}
-            device['udid'] = udid
-            device['platform'] = platform
-            device['name'] = 'unknown'
-            device['manufacturer'] = 'unknown'
-            device['model'] = 'unknown'
-            device['osv'] = 'unknown'
-            return device
+            deviceNode = self.root.findall(".//device[udid='" + udid + "']")
+            try:
+                device = {}
+                device['udid'] = deviceNode[0].find('udid').text
+                device['platform'] = platform
+                device['name'] = deviceNode[0].find('deviceName').text
+                device['manufacturer'] = deviceNode[0].find('manufacturer').text
+                device['model'] = deviceNode[0].find('model').text
+                device['osv'] = deviceNode[0].find('osv').text
+                return device
+            except:
+                device = {}
+                device['udid'] = udid
+                device['platform'] = platform
+                device['name'] = 'unknown'
+                device['manufacturer'] = 'unknown'
+                device['model'] = 'unknown'
+                device['osv'] = 'unknown'
+                return device
 
+    def getDesktopDevice(self, info):
+        env = info[1].split('<|>')
+        device = {}
+        device['udid']= env[0]
+        device['platform'] = 'Desktop'
+        device['name'] = env[0] + ' - ' + env[1]
+        device['manufacturer'] = env[1]
+        device['model'] = env[0]
+        device['osv'] = env[0]
+        return device
+
+    def sauceDevices(self):
+        pass
 
     def gridDevices(self):
+        output = []
         try:
+
             page = requests.get(GetConfig('GRID_URL') + '/grid/console')
             soup = BeautifulSoup(page.text, 'html.parser')
-            output = []
-            for id in soup.select('a[title*=platform]'):
-                if id.attrs['title'].find("MAC") > 0:
-                    output.append([id.text, 'iOS'])
-                else:
-                    output.append([id.text, "Android"])
+            if self.platform == 'mobile':
+                output += self.mobileGridDevices(soup)
+            elif self.platform == 'desktop':
+              output += self.desktopGridDevices(soup)
+
         except:
             output = []
+        return output
+
+    def mobileGridDevices(self, soup):
+        output = []
+        for id in soup.select('a[title*=platform]'):
+            if id.attrs['title'].find("MAC") > 0:
+                output.append([id.text, 'iOS'])
+            else:
+                output.append([id.text, "Android"])
+        return output
+
+    def desktopGridDevices(self, soup):
+        output = []
+        for id in soup.select('img[title*=WebDriver]'):
+            browser = re.search('browserName=.*?,', id['title']).group().split('=')[1].replace(',','')
+            os = re.search('platform=.*?}', id['title']).group().split('=')[1].replace('}','')
+            if not [id.text, browser + '<|>' + os ] in output:
+                output.append([id.text, browser + '<|>' + os])
         return output
