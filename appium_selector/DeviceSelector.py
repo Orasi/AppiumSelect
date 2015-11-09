@@ -86,7 +86,11 @@ class DeviceSelector:
         info = DeviceInfo(platform='desktop')
         for deviceId in info.gridDevices():
             device = info.getDevice(deviceId)
-            self.listbox.insert(END,
+            if device['platform'] == 'Desktop':
+                self.listbox.insert(END,
+                                device['platform'] + ' -- '  + device['name'].replace('<|>', " -- "))
+            else:
+                self.listbox.insert(END,
                                 device['platform'] + ' -- ' + device['udid'] + ' -- ' + device['name'] if device['name'] != 'unknown'
                                 else device['platform'] + ' -- ' + device['udid'] + ' -- Unknown Device,  Please add to details to Devices.xml')
         #self.listbox.insert(END, 'SauceLabs')

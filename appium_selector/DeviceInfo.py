@@ -20,7 +20,6 @@ class DeviceInfo:
         devicePath = projectFolder + "/Devices.xml"
         if not os.path.exists(devicePath):
             open(devicePath, 'w').close()
-
         return ET.parse(devicePath)
 
     def getDevice(self, info):
@@ -54,12 +53,12 @@ class DeviceInfo:
     def getDesktopDevice(self, info):
         env = info[1].split('<|>')
         device = {}
-        device['udid']= env[0]
+        device['udid']= info[1]
         device['platform'] = 'Desktop'
-        device['name'] = env[0] + ' - ' + env[1]
-        device['manufacturer'] = env[1]
+        device['name'] = info[1]
+        device['manufacturer'] = env[2]
         device['model'] = env[0]
-        device['osv'] = env[0]
+        device['osv'] = env[1]
         return device
 
     def sauceDevices(self):
@@ -93,7 +92,8 @@ class DeviceInfo:
         output = []
         for id in soup.select('img[title*=WebDriver]'):
             browser = re.search('browserName=.*?,', id['title']).group().split('=')[1].replace(',','')
-            os = re.search('platform=.*?}', id['title']).group().split('=')[1].replace('}','')
-            if not [id.text, browser + '<|>' + os ] in output:
-                output.append([id.text, browser + '<|>' + os])
+            platform = re.search('platform=.*?,', id['title']).group().split('=')[1].replace('}','')
+            browserVersion = re.search('version=.*?}', id['title']).group().split('=')[1].replace('}','')
+            if not [id.text, browser + '<|>' + browserVersion + '<|>' + platform] in output:
+                output.append([id.text, browser + '<|>' + browserVersion + '<|>' + platform])
         return output
