@@ -180,7 +180,7 @@ class DeviceSelector:
             options['mustard'] = self.mustard
             caps['udid'] = device['udid']
             caps['platformName'] = device['manufacturer']
-            caps['browserName'] = device['udid']
+            caps['browserName'] = device['model']
             caps['deviceName'] = device['udid']
         else:
             options['provider'] = 'grid'

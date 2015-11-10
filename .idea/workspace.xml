@@ -25,7 +25,7 @@
         <entry file="file://$PROJECT_DIR$/appium_selector/DeviceInfo.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+              <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -65,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeviceSelector.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DeviceSelector.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appium_selector/DeviceSelector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36288998">
-              <caret line="136" column="83" selection-start-line="136" selection-start-column="83" selection-end-line="136" selection-end-column="83" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="182" column="47" selection-start-line="182" selection-start-column="47" selection-end-line="182" selection-end-column="47" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -77,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="77" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
+            <state vertical-scroll-proportion="0.087484814">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -218,7 +218,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CBCWeb" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
@@ -395,15 +395,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-10" width="1920" height="1210" extended-state="6" />
+    <frame x="1920" y="-10" width="1920" height="1210" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16728233" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32990655" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947367" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -856,18 +856,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="77" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/appium_selector/DeviceInfo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -876,11 +868,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/appium_selector/DeviceSelector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36288998">
-          <caret line="136" column="83" selection-start-line="136" selection-start-column="83" selection-end-line="136" selection-end-column="83" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="182" column="47" selection-start-line="182" selection-start-column="47" selection-end-line="182" selection-end-column="47" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.087484814">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
