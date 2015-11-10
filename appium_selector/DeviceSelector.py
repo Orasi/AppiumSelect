@@ -41,63 +41,72 @@ class DeviceSelector:
         if parallel:
             label = Label(frame, text="Please Select one or more devices to run")
             label.pack(side=LEFT)
-            self.listbox = Listbox(mobileFrame, selectmode=EXTENDED)
+            self.listboxMobile = Listbox(mobileFrame, selectmode=EXTENDED)
         else:
             label = Label(frame, text="Please Select one device to run")
             label.pack(side=LEFT)
-            self.listbox = Listbox(mobileFrame, selectmode=SINGLE)
+            self.listboxMobile = Listbox(mobileFrame, selectmode=SINGLE)
         frame.pack(fill=X)
 
 
-        self.listbox.pack(fill=BOTH, expand=1)
+        self.listboxMobile.pack(fill=BOTH, expand=1)
 
         # Attach Scrollbar to Listbox
-        self.listbox.config(yscrollcommand=scrollbar.set)
-        scrollbar.config(command=self.listbox.yview)
+        self.listboxMobile.config(yscrollcommand=scrollbar.set)
+        scrollbar.config(command=self.listboxMobile.yview)
 
         # Generate Listbox Data
         info = DeviceInfo(platform='mobile')
         for deviceId in info.gridDevices():
             device = info.getDevice(deviceId)
-            self.listbox.insert(END,
+            self.listboxMobile.insert(END,
                                 device['platform'] + ' -- ' + device['udid'] + ' -- ' + device['name'] if device['name'] != 'unknown'
                                 else device['platform'] + ' -- ' + device['udid'] + ' -- Unknown Device,  Please add to details to Devices.xml')
-        self.listbox.insert(END, 'SauceLabs')
-        self.listbox.insert(END, 'Local Device')
+        self.listboxMobile.insert(END, 'SauceLabs')
+        self.listboxMobile.insert(END, 'Local Device')
 
 
 
 
         desktopFrame = Frame(win)
         if parallel:
-            self.listbox = Listbox(desktopFrame, selectmode=EXTENDED)
+            self.listboxDesktop = Listbox(desktopFrame, selectmode=EXTENDED)
         else:
-            self.listbox = Listbox(desktopFrame, selectmode=SINGLE)
+            self.listboxDesktop = Listbox(desktopFrame, selectmode=SINGLE)
         frame.pack(fill=X)
 
 
-        self.listbox.pack(fill=BOTH, expand=1)
+        self.listboxDesktop.pack(fill=BOTH, expand=1)
 
         # Attach Scrollbar to Listbox
-        self.listbox.config(yscrollcommand=scrollbar.set)
-        scrollbar.config(command=self.listbox.yview)
+        self.listboxDesktop.config(yscrollcommand=scrollbar.set)
+        scrollbar.config(command=self.listboxDesktop.yview)
 
         # Generate Listbox Data
         info = DeviceInfo(platform='desktop')
         for deviceId in info.gridDevices():
             device = info.getDevice(deviceId)
             if device['platform'] == 'Desktop':
-                self.listbox.insert(END,
+                self.listboxDesktop.insert(END,
                                 device['platform'] + ' -- '  + device['name'].replace('<|>', " -- "))
             else:
-                self.listbox.insert(END,
+                self.listboxDesktop.insert(END,
                                 device['platform'] + ' -- ' + device['udid'] + ' -- ' + device['name'] if device['name'] != 'unknown'
                                 else device['platform'] + ' -- ' + device['udid'] + ' -- Unknown Device,  Please add to details to Devices.xml')
         #self.listbox.insert(END, 'SauceLabs')
         #self.listbox.insert(END, 'Local Device')
 
+        self.frame = Frame(win)
+        self.frame.pack(fill=X)
 
 
+        # Create Buttons
+        Button(mobileFrame, text="Cancel", fg="red", command=self.frame.quit, width=50, height=5).pack(side=RIGHT, fill=Y)
+        Button(mobileFrame, text="Run Test", fg="green", command=self._saveDevices, width=50).pack(side=LEFT, fill=Y)
+
+        # Create Buttons
+        Button(desktopFrame, text="Cancel", fg="red", command=self.frame.quit, width=50, height=5).pack(side=RIGHT, fill=Y)
+        Button(desktopFrame, text="Run Test", fg="green", command=self._saveDevicesDesktop, width=50).pack(side=LEFT, fill=Y)
 
         if platform.lower() == 'mobile':
             self.note.add(mobileFrame, text='Mobile')
@@ -107,13 +116,7 @@ class DeviceSelector:
             self.note.add(mobileFrame, text='Mobile')
         self.note.pack(fill=BOTH, expand=1)
 
-        self.frame = Frame(win)
-        self.frame.pack(fill=X)
 
-
-        # Create Buttons
-        Button(self.frame, text="Cancel", fg="red", command=self.frame.quit, width=50, height=5).pack(side=RIGHT, fill=Y)
-        Button(self.frame, text="Run Test", fg="green", command=self._saveDevices, width=50).pack(side=LEFT, fill=Y)
 
 
 
@@ -125,20 +128,30 @@ class DeviceSelector:
         self.root.destroy()
         return self.devices
 
-    def _saveDevices(self):
+    def _saveDevicesDesktop(self):
         info = DeviceInfo()
-        devices = self.listbox.curselection()
+        devices = self.listboxDesktop.curselection()
 
         output = []
         for device in devices:
-            deviceString = self.listbox.get(device)
-            if 'Desktop' in deviceString:
-                d = deviceString.split(' -- ')
-                deviceInfo = info.getDevice(['', d[1] + '<|>' + d[2] + '<|>' + d[3]])
-                output.append(self._createDesiredCapabilites(deviceInfo))
-            else:
-                deviceInfo = info.getDevice([deviceString.split(' -- ')[1], deviceString.split(' -- ')[0]] )
-                output.append(self._createDesiredCapabilites(deviceInfo))
+            deviceString = self.listboxDesktop.get(device)
+            d = deviceString.split(' -- ')
+            deviceInfo = info.getDevice(['', d[1] + '<|>' + d[2] + '<|>' + d[3]])
+            output.append(self._createDesiredCapabilites(deviceInfo))
+
+
+        self.frame.quit()
+        self.devices = output
+
+    def _saveDevices(self):
+        info = DeviceInfo()
+        devices = self.listboxMobile.curselection()
+
+        output = []
+        for device in devices:
+            deviceString = self.listboxMobile.get(device)
+            deviceInfo = info.getDevice([deviceString.split(' -- ')[1], deviceString.split(' -- ')[0]] )
+            output.append(self._createDesiredCapabilites(deviceInfo))
 
         self.frame.quit()
         self.devices = output
