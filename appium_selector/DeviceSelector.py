@@ -93,8 +93,9 @@ class DeviceSelector:
                 self.listboxDesktop.insert(END,
                                 device['platform'] + ' -- ' + device['udid'] + ' -- ' + device['name'] if device['name'] != 'unknown'
                                 else device['platform'] + ' -- ' + device['udid'] + ' -- Unknown Device,  Please add to details to Devices.xml')
-        #self.listbox.insert(END, 'SauceLabs')
-        #self.listbox.insert(END, 'Local Device')
+        self.listboxDesktop.insert(END, 'Local Chrome')
+        self.listboxDesktop.insert(END, 'Local Firefox')
+        self.listboxDesktop.insert(END, 'Local IE')
 
         self.frame = Frame(win)
         self.frame.pack(fill=X)
@@ -135,9 +136,12 @@ class DeviceSelector:
         output = []
         for device in devices:
             deviceString = self.listboxDesktop.get(device)
-            d = deviceString.split(' -- ')
-            deviceInfo = info.getDevice(['', d[1] + '<|>' + d[2] + '<|>' + d[3]])
-            output.append(self._createDesiredCapabilites(deviceInfo))
+            if deviceString in ['Local Chrome', 'Local Firefox', 'Local IE']:
+                output.append(self._createLocalDesiredCaps(deviceString))
+            else:
+                d = deviceString.split(' -- ')
+                deviceInfo = info.getDevice(['', d[1] + '<|>' + d[2] + '<|>' + d[3]])
+                output.append(self._createDesiredCapabilites(deviceInfo))
 
 
         self.frame.quit()
@@ -156,6 +160,19 @@ class DeviceSelector:
         self.frame.quit()
         self.devices = output
 
+    def _createLocalDesiredCaps(self, device):
+        options = {}
+        caps = {}
+        options['provider'] = device
+        options['manufacturer'] = device
+        options['model'] = device
+        options['osv'] = device
+        options['mustard'] = False
+        caps['udid'] = device
+        caps['platformName'] = device
+        caps['browserName'] = device
+        caps['deviceName'] = device
+        return {'desiredCaps': caps, 'options': options}
     def _createDesiredCapabilites(self, device):
         caps = {}
         options = {}

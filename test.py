@@ -7,11 +7,7 @@ os.environ['PROJECTFOLDER'] = get_full_path('')
 select = DeviceSelector(False, platform='desktop')
 test = select.getDevice()
 print(test)
-
-driver = webdriver.Remote(
-            'http://10.238.242.145:4444/wd/hub',
-            test[0]['desiredCaps']
-        )
+driver = webdriver.Firefox()
 driver.implicitly_wait(10)
 driver.get("http://www.google.com")
 if not "Google" in driver.title:
