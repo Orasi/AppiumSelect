@@ -229,8 +229,8 @@ class DeviceSelector:
             caps['browserName'] = device['udid']
 
         if device['platform'] == 'Android':
-            caps['app'] = 'https://dl.dropboxusercontent.com/u/21712432/hbo-android-production-release-1.2-b1087.apk'
-        else:
-            caps['app'] = 'https://dl.dropboxusercontent.com/u/21712432/HBON-Resign.ipa'
+            caps['app'] = GetConfig('ANDROID_APP_URL')
+        elif device['platform'].upper() == 'IOS':
+            caps['app'] = GetConfig('IOS_APP_URL')
 
         return {'desiredCaps': caps, 'options': options}
