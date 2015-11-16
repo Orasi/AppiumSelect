@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: appium-selector
+Version: 1.0.4
+Summary: Creates a Tcl/Tk window to read connected Appium devices from Selenium Grid and display them for selection
+Home-page: https://github.com/Mattwhooo/appium_selector.git
+Author: Matt Watson
+Author-email: Watson.Mattc@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/Mattwhooo/appium_selector/tarball/1.0.4
+Description: UNKNOWN
+Keywords: appium,selenium,testing
+Platform: UNKNOWN

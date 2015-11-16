@@ -19,4 +19,8 @@ class LocalWeb(Caps):
         self.options['osv'] = 'Local'
         self.options['mustard'] = False
 
+        self.caps['platformName'] = 'Local'
+        self.caps['browserName'] = 'Local'
+        self.caps['version'] = 'Local'
+
         return {'desiredCaps': self.caps, 'options': self.options}
