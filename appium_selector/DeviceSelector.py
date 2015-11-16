@@ -146,7 +146,7 @@ class DeviceSelector:
         output = []
         for device in self.devices:
             output.append(device.desiredCaps(mustard=self.mustard))
-        return self.devices
+        return output
 
     def _saveDevicesDesktop(self):
 
