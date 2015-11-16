@@ -22,5 +22,6 @@ class LocalWeb(Caps):
         self.caps['platformName'] = 'Local'
         self.caps['browserName'] = 'Local'
         self.caps['version'] = 'Local'
+        self.caps['deviceName'] = 'Local'
 
         return {'desiredCaps': self.caps, 'options': self.options}
