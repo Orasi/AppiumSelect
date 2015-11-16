@@ -1,0 +1,37 @@
+<SauceNodes>
+
+    <node>
+        <platform>web</platform>
+        <platformName>Mac OS X 10.9</platformName>
+        <browserName>safari</browserName>
+        <version>44</version>
+    </node>
+
+    <node>
+        <platform>web</platform>
+        <platformName>Mac OS X 10.9</platformName>
+        <browserName>chrome</browserName>
+        <version>44</version>
+    </node>
+
+    <node>
+        <platform>web</platform>
+        <platformName>Mac OS X 10.9</platformName>
+        <browserName>firefox</browserName>
+        <version>44</version>
+    </node>
+
+    <node>
+        <platform>web</platform>
+        <platformName>Windos 8.1</platformName>
+        <browserName>ie</browserName>
+        <version>11</version>
+    </node>
+
+    <node>
+        <platform>web</platform>
+        <platformName>Windows 10</platformName>
+        <browserName>edge</browserName>
+        <version>1.2</version>
+    </node>
+</SauceNodes>

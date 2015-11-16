@@ -3,13 +3,20 @@ import sys
 import os
 from tkinter.ttk import Notebook
 
-from appium_selector.DeviceInfo import DeviceInfo
-from appium_selector.Config import GetConfig
+from appium_selector.Helpers.Config import GetConfig
+from appium_selector.Helpers.GridConnector import GridConnector
+from appium_selector.Helpers.LocalConnector import LocalConnector
+from appium_selector.Helpers.SauceConnector import SauceConnector
 
 
 class DeviceSelector:
+
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     devices = None
+
+    local = LocalConnector()
+    grid = GridConnector()
+    sauce = SauceConnector()
 
     def __init__(self, parallel=False, platform='mobile'):
         # Create Window
@@ -56,17 +63,13 @@ class DeviceSelector:
         scrollbar.config(command=self.listboxMobile.yview)
 
         # Generate Listbox Data
-        info = DeviceInfo(platform='mobile')
-        for deviceId in info.gridDevices():
-            device = info.getDevice(deviceId)
-            self.listboxMobile.insert(END,
-                                device['platform'] + ' -- ' + device['udid'] + ' -- ' + device['name'] if device['name'] != 'unknown'
-                                else device['platform'] + ' -- ' + device['udid'] + ' -- Unknown Device,  Please add to details to Devices.xml')
+        mobileNodes = self.grid.mobileNodes
+        for node in mobileNodes:
+            self.listboxMobile.insert(END, node.displayString())
+        self.mobileData = mobileNodes
+
         self.listboxMobile.insert(END, 'SauceLabs')
         self.listboxMobile.insert(END, 'Local Device')
-
-
-
 
         desktopFrame = Frame(win)
         if parallel:
@@ -83,19 +86,27 @@ class DeviceSelector:
         scrollbar.config(command=self.listboxDesktop.yview)
 
         # Generate Listbox Data
-        info = DeviceInfo(platform='desktop')
-        for deviceId in info.gridDevices():
-            device = info.getDevice(deviceId)
-            if device['platform'] == 'Desktop':
-                self.listboxDesktop.insert(END,
-                                device['platform'] + ' -- '  + device['name'].replace('<|>', " -- "))
-            else:
-                self.listboxDesktop.insert(END,
-                                device['platform'] + ' -- ' + device['udid'] + ' -- ' + device['name'] if device['name'] != 'unknown'
-                                else device['platform'] + ' -- ' + device['udid'] + ' -- Unknown Device,  Please add to details to Devices.xml')
-        self.listboxDesktop.insert(END, 'Local Chrome')
-        self.listboxDesktop.insert(END, 'Local Firefox')
-        self.listboxDesktop.insert(END, 'Local IE')
+        webData = []
+        webDisplay =[]
+
+        localNodes = self.local.webNodes
+        for node in localNodes:
+            webData.append(node)
+            self.listboxDesktop.insert(END, node.displayString())
+
+        webNodes = self.grid.webNodes
+        for node in webNodes:
+            ds = node.displayString()
+            if ds not in webDisplay:
+                webDisplay.append(ds)
+                webData.append(node)
+                self.listboxDesktop.insert(END, ds)
+
+        sauceNodes = self.sauce.webNodes
+        for node in sauceNodes:
+            webData.append(node)
+            self.listboxDesktop.insert(END, node.displayString())
+        self.webData = webData
 
         self.frame = Frame(win)
         self.frame.pack(fill=X)
@@ -111,15 +122,11 @@ class DeviceSelector:
 
         if platform.lower() == 'mobile':
             self.note.add(mobileFrame, text='Mobile')
-            self.note.add(desktopFrame, text='Desktop')
+            self.note.add(desktopFrame, text='Web')
         else:
-            self.note.add(desktopFrame, text='Desktop')
+            self.note.add(desktopFrame, text='Web')
             self.note.add(mobileFrame, text='Mobile')
         self.note.pack(fill=BOTH, expand=1)
-
-
-
-
 
     def _toggleMustard(self):
         self.mustard = not self.mustard
@@ -130,107 +137,23 @@ class DeviceSelector:
         return self.devices
 
     def _saveDevicesDesktop(self):
-        info = DeviceInfo()
-        devices = self.listboxDesktop.curselection()
+
+        selected = self.listboxDesktop.curselection()
 
         output = []
-        for device in devices:
-            deviceString = self.listboxDesktop.get(device)
-            if deviceString in ['Local Chrome', 'Local Firefox', 'Local IE']:
-                output.append(self._createLocalDesiredCaps(deviceString))
-            else:
-                d = deviceString.split(' -- ')
-                deviceInfo = info.getDevice(['', d[1] + '<|>' + d[2] + '<|>' + d[3]])
-                output.append(self._createDesiredCapabilites(deviceInfo))
-
+        for selection in selected:
+            output.append(self.webData[selection].desiredCaps())
 
         self.frame.quit()
         self.devices = output
 
     def _saveDevices(self):
-        info = DeviceInfo()
-        devices = self.listboxMobile.curselection()
+
+        selected = self.listboxDesktop.curselection()
 
         output = []
-        for device in devices:
-            deviceString = self.listboxMobile.get(device)
-            deviceInfo = info.getDevice([deviceString.split(' -- ')[1], deviceString.split(' -- ')[0]] )
-            output.append(self._createDesiredCapabilites(deviceInfo))
+        for selection in selected:
+            output.append(self.mobileData[selection].desiredCaps())
 
         self.frame.quit()
         self.devices = output
-
-    def _createLocalDesiredCaps(self, device):
-        options = {}
-        caps = {}
-        options['provider'] = device
-        options['manufacturer'] = device
-        options['model'] = device
-        options['osv'] = device
-        options['mustard'] = False
-        caps['udid'] = device
-        caps['platformName'] = device
-        caps['browserName'] = device
-        caps['deviceName'] = device
-        return {'desiredCaps': caps, 'options': options}
-    def _createDesiredCapabilites(self, device):
-        caps = {}
-        options = {}
-        if device['udid'] == 'SauceLabs':
-            options['provider'] = 'saucelabs'
-            options['mustard'] = self.mustard
-
-            caps['browserName'] = ""
-            caps['appiumVersion'] = "1.4.11"
-            caps['deviceName'] = "Android Emulator"
-            caps['deviceOrientation'] = "portrait"
-            caps['platformVersion'] = "5.0"
-            caps['platformName'] = "Android"
-        elif device['udid'] == 'Local Device':
-            caps['browserName'] = "Local Device"
-            options['provider'] = 'local'
-            options['mustard'] = self.mustard
-
-            options['manufacturer'] = '1234'
-            options['model'] = '123'
-            options['osv'] = '12345'
-
-            caps['udid'] = '877cfdb7ad60d5b78d8aa02c9e90b0e929891c91'
-            caps['platformName'] = "iOS"
-            #caps['browserName'] = device['udid']
-            #caps['appActivity'] = '.SignInActivity'
-            #caps['appWaitActivity'] = '.SignInActivity'
-            caps['deviceName'] = "Android Emulator"
-            #caps['platformName'] = "Android"
-        elif device['platform'] == 'Desktop':
-            options['provider'] = 'localDesktop'
-            options['manufacturer'] = device['manufacturer']
-            options['model'] = device['model']
-            options['osv'] = device['osv']
-            options['mustard'] = self.mustard
-            caps['udid'] = device['udid']
-            caps['platformName'] = device['manufacturer']
-            caps['browserName'] = device['model']
-            caps['deviceName'] = device['udid']
-        else:
-            options['provider'] = 'grid'
-            options['manufacturer'] = device['manufacturer']
-            options['model'] = device['model']
-            options['osv'] = device['osv']
-            options['mustard'] = self.mustard
-
-            if device['platform'] == 'Android':
-                caps['appActivity'] = '.SignInActivity'
-                caps['appWaitActivity'] = '.SignInActivity'
-
-            caps['platformName'] = device['platform']
-            caps['deviceName'] = device['name']
-            caps['udid'] = device['udid']
-            caps['browserName'] = device['udid']
-
-        if device['platform'] == 'Android':
-            caps['app'] = GetConfig('ANDROID_APP_URL')
-        elif device['platform'].upper() == 'IOS':
-            caps['app'] = GetConfig('IOS_APP_URL')
-
-        return {'desiredCaps': caps, 'options': options}

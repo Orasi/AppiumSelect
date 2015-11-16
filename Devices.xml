@@ -10,6 +10,7 @@
 
     <device>
         <udid>LGLS98087ced8ca</udid>
+        <platform>Android</platform>
         <deviceName>LG-OPTIMUSG2-01</deviceName>
         <manufacturer>LG</manufacturer>
         <model>Optimus G2</model>
@@ -50,6 +51,7 @@
 
     <device>
         <udid>R32CB03RC4B</udid>
+        <platform>Android</platform>
         <deviceName>NEXUS-10-01</deviceName>
         <manufacturer>Google</manufacturer>
         <model>Nexus 10</model>

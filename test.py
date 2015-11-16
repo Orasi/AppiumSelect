@@ -1,13 +1,21 @@
 import os
+
 from appium_selector.FilePath import get_full_path
+
+os.environ['PROJECTFOLDER'] = get_full_path('')
 from appium_selector.DeviceSelector import DeviceSelector
 from selenium import webdriver
-os.environ['PROJECTFOLDER'] = get_full_path('')
+
+
+
 
 select = DeviceSelector(False, platform='desktop')
 test = select.getDevice()
 print(test)
-driver = webdriver.Firefox()
+driver = webdriver.Remote(
+   command_executor='http://127.0.0.1:4444/wd/hub',
+   desired_capabilities=test[0]['desiredCaps'])
+
 driver.implicitly_wait(10)
 driver.get("http://www.google.com")
 if not "Google" in driver.title:
