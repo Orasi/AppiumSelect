@@ -12,12 +12,12 @@ class LocalWeb(Caps):
     def displayString(self):
         return "Local %s" % self.browser
 
-    def desiredCaps(self):
+    def desiredCaps(self, mustard=False):
         self.options['provider'] = 'local-' + self.browser
         self.options['manufacturer'] = 'local'
         self.options['model'] = 'local'
         self.options['osv'] = 'Local'
-        self.options['mustard'] = False
+        self.options['mustard'] = mustard
 
         self.caps['platformName'] = 'Local'
         self.caps['browserName'] = 'Local'

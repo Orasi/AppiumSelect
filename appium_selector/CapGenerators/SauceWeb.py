@@ -16,11 +16,12 @@ class SauceWeb(Caps):
         version = self.env.find('version').text
         return "Sauce -- %s -- %s -- %s" % (platform, browser, version)
 
-    def desiredCaps(self):
+    def desiredCaps(self, mustard=True):
         self.options['provider'] = 'sauceWeb'
         self.options['manufacturer'] = self.env.find('platformName').text
         self.options['model'] = self.env.find('browserName').text
         self.options['osv'] = self.env.find('version').text
+        self.options['mustard'] = mustard
 
         self.caps['platformName'] = self.env.find('platformName').text
         self.caps['browserName'] = self.env.find('browserName').text

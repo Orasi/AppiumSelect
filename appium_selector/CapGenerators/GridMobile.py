@@ -19,12 +19,12 @@ class GridMobile(Caps):
         name = self.device['name']
         return "%s -- %s -- %s" % (platform, udid, name)
     
-    def desiredCaps(self):
+    def desiredCaps(self, mustard=True):
         self.options['provider'] = 'gridMobile'
         self.options['manufacturer'] = self.device['manufacturer']
         self.options['model'] = self.device['model']
         self.options['osv'] = self.device['osv']
-
+        self.options['mustard'] = mustard
         self.caps['platformName'] = propertyFromString('platform', self.env)
         self.caps['browserName'] = self.device['udid']
         self.caps['udid'] = self.device['udid']

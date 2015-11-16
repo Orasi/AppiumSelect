@@ -15,12 +15,12 @@ class GridWeb(Caps):
         osv = 'na'
         return "%s -- %s -- %s" % (platform, browser, osv)
 
-    def desiredCaps(self):
+    def desiredCaps(self, mustard=True):
         self.options['provider'] = 'gridWeb'
         self.options['manufacturer'] = propertyFromString('platform', self.env)
         self.options['model'] = propertyFromString('browserName', self.env)
         self.options['osv'] = 'Local'
-        self.options['mustard'] = False
+        self.options['mustard'] = mustard
 
         self.caps['platformName'] = propertyFromString('platform', self.env)
         self.caps['browserName'] = propertyFromString('browserName', self.env)

@@ -19,6 +19,14 @@ class DeviceSelector:
     sauce = SauceConnector()
 
     def __init__(self, parallel=False, platform='mobile'):
+        self.parallel = parallel
+        self.platform = platform
+
+
+    def start(self):
+        parallel = self.parallel
+        platform = self.platform
+
         # Create Window
         self.root = Tk()
         win = self.root
@@ -132,8 +140,12 @@ class DeviceSelector:
         self.mustard = not self.mustard
 
     def getDevice(self):
+        self.start()
         self.root.mainloop()
         self.root.destroy()
+        output = []
+        for device in self.devices:
+            output.append(device.desiredCaps(mustard=self.mustard))
         return self.devices
 
     def _saveDevicesDesktop(self):
@@ -142,7 +154,7 @@ class DeviceSelector:
 
         output = []
         for selection in selected:
-            output.append(self.webData[selection].desiredCaps())
+            output.append(self.webData[selection])
 
         self.frame.quit()
         self.devices = output
@@ -153,7 +165,7 @@ class DeviceSelector:
 
         output = []
         for selection in selected:
-            output.append(self.mobileData[selection].desiredCaps())
+            output.append(self.mobileData[selection])
 
         self.frame.quit()
         self.devices = output
