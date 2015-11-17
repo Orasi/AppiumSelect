@@ -13,7 +13,9 @@ class GridConnector(object):
 
     webNodes = []
     mobileNodes = []
+
     browsers = ['chrome', 'firefox', 'ie', 'safari', 'edge']
+    mobilePlatforms = ['ANDROID', 'IOS']
 
     def __init__(self):
         for node in self._getNodes():
@@ -30,7 +32,7 @@ class GridConnector(object):
             return []
 
     def _parseNodes(self, node):
-        if 'deviceName' not in node['title']:
+        if self._propertyFromTitle('platform') not in self.mobilePlatforms:
             self.webNodes.append(GridWeb(node['title']))
         elif self._propertyFromTitle('browserName', node['title']) in self.browsers:
             self.webNodes.append(GridMobileWeb(node['title']))

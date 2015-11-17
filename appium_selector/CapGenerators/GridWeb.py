@@ -12,7 +12,7 @@ class GridWeb(Caps):
     def displayString(self):
         platform = propertyFromString('platform', self.env)
         browser = propertyFromString('browserName', self.env)
-        osv = 'na'
+        osv = propertyFromString('version', self.env)
         return "%s -- %s -- %s" % (platform, browser, osv)
 
     def desiredCaps(self, mustard=True):
@@ -25,4 +25,6 @@ class GridWeb(Caps):
         self.caps['platformName'] = propertyFromString('platform', self.env)
         self.caps['browserName'] = propertyFromString('browserName', self.env)
         self.caps['udid'] = self.displayString()
+        self.caps['deviceName'] = self.displayString()
+        self.caps['version'] = propertyFromString('version', self.env)
         return {'desiredCaps': self.caps, 'options': self.options}
