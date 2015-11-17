@@ -154,7 +154,7 @@ class DeviceSelector:
 
         output = []
         for selection in selected:
-            output.append(self.webData[selection])
+            output.append(self.webData[int(selection)])
 
         self.frame.quit()
         self.devices = output
@@ -165,7 +165,7 @@ class DeviceSelector:
 
         output = []
         for selection in selected:
-            output.append(self.mobileData[selection])
+            output.append(self.mobileData[int(selection)])
 
         self.frame.quit()
         self.devices = output
