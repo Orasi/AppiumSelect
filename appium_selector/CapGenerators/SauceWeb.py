@@ -25,5 +25,5 @@ class SauceWeb(Caps):
         self.caps['platform'] = self.env.find('platformName').text
         self.caps['browserName'] = self.env.find('browserName').text
         self.caps['version'] = self.env.find('version').text
-        self.caps['udid'] = "%s  --  %s  --  %s" % (self.env.find('platformName').text, self.env.find('browserName').text, self.env.find('version').text)
+        self.caps['udid'] = "%s-%s-%s" % (self.env.find('platformName').text.replace('.',''), self.env.find('browserName').text.replace('.',''), self.env.find('version').text.replace('.',''))
         return {'desiredCaps': self.caps, 'options': self.options}
