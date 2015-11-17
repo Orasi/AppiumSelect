@@ -31,6 +31,6 @@ class GridMobileWeb(Caps):
         self.caps['platformName'] = propertyFromString('platform', self.env)
         self.caps['browserName'] = propertyFromString('browserName', self.env)
         self.caps['udid'] = self.device['udid']
-        self.caps['deviceName'] = self.device['name']
+        self.caps['deviceName'] = self.device['udid']
 
         return {'desiredCaps': self.caps, 'options': self.options}

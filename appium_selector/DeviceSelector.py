@@ -161,7 +161,7 @@ class DeviceSelector:
 
     def _saveDevices(self):
 
-        selected = self.listboxDesktop.curselection()
+        selected = self.listboxMobile.curselection()
 
         output = []
         for selection in selected:
