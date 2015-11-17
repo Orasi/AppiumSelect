@@ -15,7 +15,7 @@ class GridConnector(object):
     mobileNodes = []
 
     browsers = ['chrome', 'firefox', 'ie', 'safari', 'edge']
-    mobilePlatforms = ['ANDROID', 'IOS']
+    mobilePlatforms = ['ANDROID', 'MAC']
 
     def __init__(self):
         for node in self._getNodes():
