@@ -23,7 +23,7 @@ class SauceWeb(Caps):
         self.options['osv'] = self.env.find('version').text
         self.options['mustard'] = mustard
 
-        self.caps['platformName'] = self.env.find('platformName').text
+        self.caps['platform'] = self.env.find('platformName').text
         self.caps['browserName'] = self.env.find('browserName').text
         self.caps['version'] = self.env.find('version').text
         return {'desiredCaps': self.caps, 'options': self.options}
