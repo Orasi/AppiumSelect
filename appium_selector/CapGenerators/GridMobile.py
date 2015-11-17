@@ -4,14 +4,13 @@ from appium_selector.Helpers.GetDeviceInfo import getDeviceInfo
 
 class GridMobile(Caps):
 
-    options = {}
-    caps = {}
-
     def __init__(self, environment):
         self.env = environment
         self.udid = propertyFromString('deviceName', self.env)
         self.platform = propertyFromString('platform', self.env)
         self.device = getDeviceInfo(self.udid, self.platform)
+        self.options = {}
+        self.caps = {}
 
     def displayString(self):
         platform = self.device['platform']

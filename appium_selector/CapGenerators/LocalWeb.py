@@ -3,11 +3,10 @@ from appium_selector.CapGenerators.Caps import Caps, propertyFromString
 
 class LocalWeb(Caps):
 
-    options = {}
-    caps = {}
-
     def __init__(self, browser):
         self.browser = browser
+        self.options = {}
+        self.caps = {}
 
     def displayString(self):
         return "Local %s" % self.browser

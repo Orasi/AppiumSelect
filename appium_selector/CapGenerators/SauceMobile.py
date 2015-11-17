@@ -3,12 +3,11 @@ from appium_selector.CapGenerators.Caps import Caps
 
 class SauceMobile(Caps):
 
-    sauceNode = []
-    options = {}
-    caps = {}
-
     def __init__(self, environment):
         self.env = environment
+        self.sauceNode = []
+        self.options = {}
+        self.caps = {}
 
     def displayString(self):
         platform = self.env.find('platformName').text

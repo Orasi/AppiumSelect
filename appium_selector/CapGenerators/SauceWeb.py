@@ -3,11 +3,10 @@ from appium_selector.CapGenerators.Caps import Caps
 
 class SauceWeb(Caps):
 
-    sauceNode = []
-    options = {}
-    caps = {}
-
     def __init__(self, environment):
+        self.sauceNode = []
+        self.options = {}
+        self.caps = {}
         self.env = environment
 
     def displayString(self):

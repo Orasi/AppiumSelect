@@ -144,8 +144,9 @@ class DeviceSelector:
         self.root.mainloop()
         self.root.destroy()
         output = []
-        for device in self.devices:
-            output.append(device.desiredCaps(mustard=self.mustard))
+        for x in range(len(self.devices)):
+            dc = self.devices[x].desiredCaps(mustard=self.mustard)
+            output.append(dc)
         return output
 
     def _saveDevicesDesktop(self):

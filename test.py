@@ -1,30 +1,31 @@
 import os
-
 from appium_selector.FilePath import get_full_path
+import unittest
+import threading
+import builtins
 
 os.environ['PROJECTFOLDER'] = get_full_path('')
+
 from appium_selector.DeviceSelector import DeviceSelector
-from selenium import webdriver
 
 
+os.environ['AddMustard'] = 'True'
 
 
-select = DeviceSelector(False, platform='desktop')
-test = select.getDevice()
-print(test)
-driver = webdriver.Remote(
-   command_executor='http://127.0.0.1:4444/wd/hub',
-   desired_capabilities=test[0]['desiredCaps'])
+builtins.threadlocal = threading.local()
 
-driver.implicitly_wait(10)
-driver.get("http://www.google.com")
-if not "Google" in driver.title:
-    raise Exception("Unable to load google page!")
-elem = driver.find_element_by_name("q")
-elem.send_keys("Sauce Labs")
-elem.submit()
-print(driver.title)
+def run_all_test(device=None):
+    builtins.threadlocal.config = device
+    loader = unittest.TestLoader()
 
-# This is where you tell Sauce Labs to stop running tests on your behalf.
-# It's important so that you aren't billed after your test finishes.
-driver.quit()
+    tests = loader.discover('./Tests', pattern='*Tests.py')
+    runner = unittest.TextTestRunner()
+    runner.run(tests)
+
+threads =[]
+for device in DeviceSelector(True, platform='desktop').getDevice():
+    #t = threading.Thread(target=run_all_test, args=[device])
+    #threads.append(t)
+    print(str(device))
+    #t.start()
+

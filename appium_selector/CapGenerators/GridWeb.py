@@ -3,11 +3,10 @@ from appium_selector.CapGenerators.Caps import Caps, propertyFromString
 
 class GridWeb(Caps):
 
-    options = {}
-    caps = {}
-
     def __init__(self, environment):
         self.env = environment
+        self.options = {}
+        self.caps = {}
 
     def displayString(self):
         platform = propertyFromString('platform', self.env)
