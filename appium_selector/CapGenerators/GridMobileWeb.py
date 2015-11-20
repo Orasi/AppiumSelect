@@ -22,8 +22,8 @@ class GridMobileWeb(Caps):
     
     def desiredCaps(self, mustard=True):
         self.options['provider'] = 'gridMobileWeb'
-        self.options['manufacturer'] = self.device['platform']
-        self.options['model'] = propertyFromString('browserName', self.env)
+        self.options['manufacturer'] = self.device['manufacturer']
+        self.options['model'] = self.device['model']
         self.options['osv'] = self.device['osv']
         self.options['mustard'] = mustard
 
