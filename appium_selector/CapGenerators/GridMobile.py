@@ -24,6 +24,8 @@ class GridMobile(Caps):
         self.options['model'] = self.device['model']
         self.options['osv'] = self.device['osv']
         self.options['mustard'] = mustard
+        self.options['deviceName'] = self.displayString()
+
         self.caps['platformName'] = propertyFromString('platform', self.env)
         self.caps['browserName'] = self.device['udid']
         self.caps['udid'] = self.device['udid']

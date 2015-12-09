@@ -20,6 +20,7 @@ class GridWeb(Caps):
         self.options['model'] = propertyFromString('browserName', self.env)
         self.options['osv'] = 'Local'
         self.options['mustard'] = mustard
+        self.options['deviceName'] = self.displayString()
 
         self.caps['platformName'] = propertyFromString('platform', self.env)
         self.caps['browserName'] = propertyFromString('browserName', self.env)

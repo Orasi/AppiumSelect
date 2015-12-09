@@ -26,6 +26,7 @@ class GridMobileWeb(Caps):
         self.options['model'] = self.device['model']
         self.options['osv'] = self.device['osv']
         self.options['mustard'] = mustard
+        self.options['deviceName'] = self.displayString()
 
         self.caps['platform'] = propertyFromString('platform', self.env)
         self.caps['platformName'] = 'iOS' if propertyFromString('platform', self.env) == 'MAC' else 'Android'

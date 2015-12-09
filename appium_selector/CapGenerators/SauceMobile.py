@@ -21,7 +21,7 @@ class SauceMobile(Caps):
         self.options['model'] = self.env.find('deviceName').text
         self.options['osv'] = self.env.find('platformVersion').text
         self.options['mustard'] = mustard
-        self.options['deviceName'] = self.displayString().replace('.','').replace(' ', '')
+        self.options['deviceName'] = self.displayString()
 
         self.caps['deviceName'] = self.env.find('deviceName').text
         self.caps['deviceOrientation'] = self.env.find('deviceOrientation').text
