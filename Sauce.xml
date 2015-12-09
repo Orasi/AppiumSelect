@@ -29,9 +29,12 @@
     </node>
 
     <node>
-        <platform>web</platform>
-        <platformName>Windows 10</platformName>
-        <browserName>edge</browserName>
+        <platform>mobile</platform>
+        <platformName>Android</platformName>
+        <deviceName>Samsung Galaxy S4 Emulator</deviceName>
+        <platformVersion>4.4</platformVersion>
+        <deviceOrientation>portrait</deviceOrientation>
+        <browserName></browserName>
         <version>1.2</version>
     </node>
 </SauceNodes>

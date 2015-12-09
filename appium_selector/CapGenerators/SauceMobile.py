@@ -11,18 +11,22 @@ class SauceMobile(Caps):
 
     def displayString(self):
         platform = self.env.find('platformName').text
-        browser = self.env.find('browserName').text
-        version = self.env.find('version').text
+        browser = self.env.find('deviceName').text
+        version = self.env.find('platformVersion').text
         return "Sauce -- %s -- %s -- %s" % (platform, browser, version)
 
     def desiredCaps(self, mustard=True):
-        self.options['provider'] = 'sauceWeb'
+        self.options['provider'] = 'sauceMobile'
         self.options['manufacturer'] = self.env.find('platformName').text
-        self.options['model'] = self.env.find('browserName').text
-        self.options['osv'] = self.env.find('version').text
+        self.options['model'] = self.env.find('deviceName').text
+        self.options['osv'] = self.env.find('platformVersion').text
         self.options['mustard'] = mustard
 
+        self.caps['deviceName'] = self.env.find('deviceName').text
+        self.caps['deviceOrientation'] = self.env.find('deviceOrientation').text
+        self.caps['browserName'] = self.env.find('version').text
+        self.caps['platformVersion'] = self.env.find('platformVersion').text
         self.caps['platformName'] = self.env.find('platformName').text
-        self.caps['browserName'] = self.env.find('browserName').text
-        self.caps['version'] = self.env.find('version').text
+
+
         return {'desiredCaps': self.caps, 'options': self.options}

@@ -71,12 +71,19 @@ class DeviceSelector:
         scrollbar.config(command=self.listboxMobile.yview)
 
         # Generate Listbox Data
+        mobileData = []
         mobileNodes = self.grid.mobileNodes
         for node in mobileNodes:
+            mobileData.append(node)
             self.listboxMobile.insert(END, node.displayString())
-        self.mobileData = mobileNodes
 
-        self.listboxMobile.insert(END, 'SauceLabs')
+        sauceNodes = self.sauce.mobileNodes
+        for node in sauceNodes:
+            mobileData.append(node)
+            self.listboxMobile.insert(END, node.displayString())
+
+        self.mobileData = mobileData
+
         self.listboxMobile.insert(END, 'Local Device')
 
         desktopFrame = Frame(win)
