@@ -24,7 +24,7 @@ class SauceMobile(Caps):
 
         self.caps['deviceName'] = self.env.find('deviceName').text
         self.caps['deviceOrientation'] = self.env.find('deviceOrientation').text
-        self.caps['browserName'] = self.env.find('browserName').text
+        self.caps['browserName'] = ''
         self.caps['platformVersion'] = self.env.find('platformVersion').text
         self.caps['platformName'] = self.env.find('platformName').text
 
