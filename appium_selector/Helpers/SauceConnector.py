@@ -26,5 +26,4 @@ class SauceConnector(object):
 
         mobileNodes = root.findall(".//node[platform='mobile']")
         for node in mobileNodes:
-            pass
             self.mobileNodes.append(SauceMobile(node))

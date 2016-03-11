@@ -2,7 +2,7 @@ from tkinter import *
 import sys
 import os
 from tkinter.ttk import Notebook
-
+import re
 from appium_selector.Helpers.Config import GetConfig
 from appium_selector.Helpers.GridConnector import GridConnector
 from appium_selector.Helpers.LocalConnector import LocalConnector
@@ -146,15 +146,32 @@ class DeviceSelector:
     def _toggleMustard(self):
         self.mustard = not self.mustard
 
-    def getDevice(self):
-        self.start()
-        self.root.mainloop()
-        self.root.destroy()
-        output = []
-        for x in range(len(self.devices)):
-            dc = self.devices[x].desiredCaps(mustard=self.mustard)
-            output.append(dc)
-        return output
+    def getDevice(self, filter=None):
+        if filter:
+            #webNodes = self.grid.webNodes
+            #mobileNodes = self.grid.mobileNodes
+            if self.platform:
+                if self.platform == 'desktop':
+                    nodes = self.grid.webNodes + self.sauce.webNodes
+                elif self.platform == 'mobile':
+                    nodes = self.grid.mobileNodes + self.sauce.mobileNodes
+                else:
+                    nodes = self.grid.webNodes + self.grid.mobileNodes + self.sauce.webNodes + self.sauce.mobileNodes
+            output=[]
+            for node in nodes:
+                if re.search(filter, node.displayString()):
+                    dc = node.desiredCaps(mustard=False)
+                    output.append(dc)
+            return output
+        else:
+            self.start()
+            self.root.mainloop()
+            self.root.destroy()
+            output = []
+            for x in range(len(self.devices)):
+                dc = self.devices[x].desiredCaps(mustard=self.mustard)
+                output.append(dc)
+            return output
 
     def _saveDevicesDesktop(self):
 
