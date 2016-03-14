@@ -165,6 +165,11 @@ class DeviceSelector:
             return output
         else:
             self.start()
+            # bring window to front on Mac OSX
+            if sys.platform.lower() == 'darwin':
+                self.root.lift()
+                self.root.call('wm', 'attributes', '.', '-topmost', True)
+                self.root.after_idle(self.root.call, 'wm', 'attributes', '.', '-topmost', False)
             self.root.mainloop()
             self.root.destroy()
             output = []
