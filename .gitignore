@@ -39,3 +39,4 @@ tmtagsHistory
 *.sublime-project
 *.sublime-workspace
 .bundle
+appium_selector.egg-info
