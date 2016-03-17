@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7231d51-632a-4591-ba06-f54689364161" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appium_selector.egg-info/PKG-INFO" afterPath="$PROJECT_DIR$/appium_selector.egg-info/PKG-INFO" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appium_selector/DeviceSelector.py" afterPath="$PROJECT_DIR$/appium_selector/DeviceSelector.py" />
     </list>
     <ignored path="AppiumSelector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeviceSelector.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DeviceSelector.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appium_selector/DeviceSelector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.10325048">
-              <caret line="36" column="72" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -78,10 +78,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.875">
+            <state vertical-scroll-proportion="0.122199595">
               <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
               <folding />
             </state>
@@ -170,8 +170,8 @@
         <option value="$PROJECT_DIR$/appium_selector/Helpers/SauceConnector.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/appium_selector/DeviceSelector.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
   </component>
@@ -866,7 +866,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
-            <element signature="e#0#71#0" expanded="true" />
+            <element signature="e#0#71#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -942,21 +942,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.875">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/appium_selector/DeviceSelector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10325048">
-          <caret line="36" column="72" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.122199595">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

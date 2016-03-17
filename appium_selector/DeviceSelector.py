@@ -33,8 +33,6 @@ class DeviceSelector:
         self.note = Notebook(self.root)
 
         # Set Window Properties
-        if sys.platform.lower() == 'windows' or sys.platform.lower() == 'win32':
-            win.iconbitmap(default=os.path.join(self.BASE_DIR, 'Helpers\\runner.ico'))
         win.wm_title("Test Runner")
         win.minsize(width=500, height=500)
 
