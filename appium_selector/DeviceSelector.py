@@ -143,6 +143,10 @@ class DeviceSelector:
             self.note.add(mobileFrame, text='Mobile')
         self.note.pack(fill=BOTH, expand=1)
 
+        # allow double clicking in listbox to select a browser
+        self.listboxMobile.bind('<Double-1>', lambda x: self._saveDevices())
+        self.listboxDesktop.bind('<Double-1>', lambda x: self._saveDevicesDesktop())
+
     def _toggleMustard(self):
         self.mustard = not self.mustard
 
