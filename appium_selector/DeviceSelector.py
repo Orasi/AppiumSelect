@@ -148,7 +148,7 @@ class DeviceSelector:
     def _toggleMustard(self):
         self.mustard = not self.mustard
 
-    def getDevice(self, filter=None):
+    def getDevice(self, filter=None, mustard=True):
         if filter:
             #webNodes = self.grid.webNodes
             #mobileNodes = self.grid.mobileNodes
@@ -162,7 +162,7 @@ class DeviceSelector:
             output=[]
             for node in nodes:
                 if re.search(filter, node.displayString()):
-                    dc = node.desiredCaps(mustard=False)
+                    dc = node.desiredCaps(mustard=mustard)
                     output.append(dc)
             return output
         else:
