@@ -1,3 +1,5 @@
+from hotdog.Config import GetConfig
+
 from appium_selector.CapGenerators.Caps import Caps
 
 
@@ -23,6 +25,10 @@ class SauceWeb(Caps):
         self.options['mustard'] = mustard
         self.options['deviceName'] = self.displayString()
 
+        try:
+            self.caps['parentTunnel'] = GetConfig('SAUCE_PARENT_TUNNEL')
+        except:
+            pass
         self.caps['platform'] = self.env.find('platformName').text
         self.caps['browserName'] = self.env.find('browserName').text
         self.caps['version'] = self.env.find('version').text
