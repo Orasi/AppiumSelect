@@ -28,6 +28,7 @@ class GridMobile(Caps):
 
         self.caps['platformName'] = propertyFromString('platform', self.env).capitalize()
         #self.caps['browserName'] = self.device['udid']
+        self.caps['applicationName'] =  self.device['udid']
         self.caps['udid'] = self.device['udid']
         self.caps['deviceName'] = self.device['name']
         
