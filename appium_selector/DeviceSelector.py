@@ -81,6 +81,11 @@ class DeviceSelector:
             mobileData.append(node)
             self.listboxMobile.insert(END, node.displayString())
 
+        mcNodes = self.mc.mobileNodes
+        for node in mcNodes:
+            mobileData.append(node)
+            self.listboxMobile.insert(END, node.displayString())
+
         self.mobileData = mobileData
 
         self.listboxMobile.insert(END, 'Local Device')

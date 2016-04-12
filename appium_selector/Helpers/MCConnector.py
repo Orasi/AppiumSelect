@@ -1,9 +1,8 @@
 import os
 import xml.etree.ElementTree as ET
 
+from appium_selector.CapGenerators.MCMobile import MCMobile
 from appium_selector.CapGenerators.MCWeb import MCWeb
-from appium_selector.CapGenerators.SauceMobile import SauceMobile
-from appium_selector.CapGenerators.SauceWeb import SauceWeb
 from appium_selector.Helpers.Config import GetConfig
 
 
@@ -26,6 +25,6 @@ class MCConnector(object):
         for node in webNodes:
             self.webNodes.append(MCWeb(node))
 
-        # mobileNodes = root.findall(".//node[platform='mobile']")
-        # for node in mobileNodes:
-        #     self.mobileNodes.append(SauceMobile(node))
+        mobileNodes = root.findall(".//node[platform='mobile']")
+        for node in mobileNodes:
+            self.mobileNodes.append(MCMobile(node))

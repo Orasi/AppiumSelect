@@ -3,7 +3,7 @@ from hotdog.Config import GetConfig
 from appium_selector.CapGenerators.Caps import Caps
 
 
-class MCWeb(Caps):
+class MCMobile(Caps):
 
     def __init__(self, environment):
         self.mcNode = []
@@ -17,7 +17,7 @@ class MCWeb(Caps):
         return "MobileCenter -- %s -- %s " % (device, browser)
 
     def desiredCaps(self, mustard=True):
-        self.options['provider'] = 'mcWeb'
+        self.options['provider'] = 'mcMobile'
         self.options['manufacturer'] = self.env.find('platformName').text
         self.options['model'] = self.env.find('browserName').text
         self.options['osv'] = self.env.find('version').text
@@ -25,7 +25,6 @@ class MCWeb(Caps):
         self.options['deviceName'] = self.displayString()
 
         self.caps['platformName'] = self.env.find('platformName').text
-        self.caps['browserName'] = self.env.find('browserName').text
         self.caps['deviceName'] = self.env.find('deviceName').text
         self.caps['userName'] = 'admin@default.com'
         self.caps['password'] = 'password'
