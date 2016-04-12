@@ -17,7 +17,7 @@ class MCWeb(Caps):
         return "MobileCenter -- %s -- %s " % (device, browser)
 
     def desiredCaps(self, mustard=True):
-        self.options['provider'] = 'sauceWeb'
+        self.options['provider'] = 'mcWeb'
         self.options['manufacturer'] = self.env.find('platformName').text
         self.options['model'] = self.env.find('browserName').text
         self.options['mustard'] = mustard
