@@ -15,15 +15,14 @@ class SauceConnector(object):
         #Open Device Config File
         projectFolder = GetConfig("ProjectFolder")
         devicePath = projectFolder + "/Sauce.xml"
-        if not os.path.exists(devicePath):
-            open(devicePath, 'w').close()
+        if os.path.exists(devicePath):
 
-        #Find Device
-        root = ET.parse(devicePath).getroot()
-        webNodes = root.findall(".//node[platform='web']")
-        for node in webNodes:
-            self.webNodes.append(SauceWeb(node))
+            #Find Device
+            root = ET.parse(devicePath).getroot()
+            webNodes = root.findall(".//node[platform='web']")
+            for node in webNodes:
+                self.webNodes.append(SauceWeb(node))
 
-        mobileNodes = root.findall(".//node[platform='mobile']")
-        for node in mobileNodes:
-            self.mobileNodes.append(SauceMobile(node))
+            mobileNodes = root.findall(".//node[platform='mobile']")
+            for node in mobileNodes:
+                self.mobileNodes.append(SauceMobile(node))

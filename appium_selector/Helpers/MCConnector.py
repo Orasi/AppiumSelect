@@ -16,15 +16,14 @@ class MCConnector(object):
         #Open Device Config File
         projectFolder = GetConfig("ProjectFolder")
         devicePath = projectFolder + "/MobileCenter.xml"
-        if not os.path.exists(devicePath):
-            open(devicePath, 'w').close()
+        if os.path.exists(devicePath):
 
-        #Find Device
-        root = ET.parse(devicePath).getroot()
-        webNodes = root.findall(".//node[platform='web']")
-        for node in webNodes:
-            self.webNodes.append(MCWeb(node))
+            #Find Device
+            root = ET.parse(devicePath).getroot()
+            webNodes = root.findall(".//node[platform='web']")
+            for node in webNodes:
+                self.webNodes.append(MCWeb(node))
 
-        mobileNodes = root.findall(".//node[platform='mobile']")
-        for node in mobileNodes:
-            self.mobileNodes.append(MCMobile(node))
+            mobileNodes = root.findall(".//node[platform='mobile']")
+            for node in mobileNodes:
+                self.mobileNodes.append(MCMobile(node))

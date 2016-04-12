@@ -14,6 +14,7 @@ appium_selector/CapGenerators/GridMobile.py
 appium_selector/CapGenerators/GridMobileWeb.py
 appium_selector/CapGenerators/GridWeb.py
 appium_selector/CapGenerators/LocalWeb.py
+appium_selector/CapGenerators/MCMobile.py
 appium_selector/CapGenerators/MCWeb.py
 appium_selector/CapGenerators/SauceMobile.py
 appium_selector/CapGenerators/SauceWeb.py
