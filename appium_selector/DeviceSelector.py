@@ -7,7 +7,7 @@ from appium_selector.Helpers.Config import GetConfig
 from appium_selector.Helpers.GridConnector import GridConnector
 from appium_selector.Helpers.LocalConnector import LocalConnector
 from appium_selector.Helpers.SauceConnector import SauceConnector
-
+from appium_selector.Helpers.MCConnector import MCConnector
 
 class DeviceSelector:
 
@@ -17,6 +17,7 @@ class DeviceSelector:
     local = LocalConnector()
     grid = GridConnector()
     sauce = SauceConnector()
+    mc = MCConnector()
 
     def __init__(self, parallel=False, platform='mobile'):
         self.parallel = parallel
@@ -119,6 +120,13 @@ class DeviceSelector:
         for node in sauceNodes:
             webData.append(node)
             self.listboxDesktop.insert(END, node.displayString())
+
+
+        mcNodes = self.mc.webNodes
+        for node in mcNodes:
+            webData.append(node)
+            self.listboxDesktop.insert(END, node.displayString())
+
         self.webData = webData
 
         self.frame = Frame(win)
