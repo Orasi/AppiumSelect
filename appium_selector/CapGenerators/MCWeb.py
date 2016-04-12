@@ -23,7 +23,6 @@ class MCWeb(Caps):
         self.options['mustard'] = mustard
         self.options['deviceName'] = self.displayString()
 
-        self.caps['platform'] = self.env.find('platform').text
         self.caps['platformName'] = self.env.find('platformName').text
         self.caps['browserName'] = self.env.find('browserName').text
         self.caps['deviceName'] = self.env.find('deviceName').text
