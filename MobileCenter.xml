@@ -1,0 +1,9 @@
+<MCNodes>
+    <node>
+        <platform>web</platform>
+        <platformName>android</platformName>
+        <deviceName>HTC6525LVW</deviceName>
+        <version>4.4.3</version>
+        <browserName>chrome</browserName>
+    </node>
+</MCNodes>

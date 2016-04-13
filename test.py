@@ -23,7 +23,7 @@ def run_all_test(device=None):
     runner.run(tests)
 
 threads =[]
-devices = DeviceSelector(True, platform='desktop').getDevice(filter='.*Sauce.*')
+devices = DeviceSelector(True, platform='').getDevice()
 for device in devices:
     #t = threading.Thread(target=run_all_test, args=[device])
     #threads.append(t)
