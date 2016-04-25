@@ -2,6 +2,7 @@ import os
 import xml.etree.ElementTree as ET
 from appium_selector.CapGenerators.SauceMobile import SauceMobile
 from appium_selector.CapGenerators.SauceWeb import SauceWeb
+from appium_selector.CapGenerators.SauceMobileWeb import SauceMobileWeb
 from appium_selector.Helpers.Config import GetConfig
 
 
@@ -30,4 +31,4 @@ class SauceConnector(object):
 
             mobileWebNodes = root.findall(".//node[platform='mobileWeb']")
             for node in mobileWebNodes:
-                self.mobileWebNodes.append(SauceWeb(node))
+                self.mobileWebNodes.append(SauceMobileWeb(node))
