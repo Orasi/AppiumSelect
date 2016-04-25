@@ -37,4 +37,13 @@
         <browserName></browserName>
         <version>1.2</version>
     </node>
+
+    <node>
+        <platform>mobileWeb</platform>>
+        <platformName>Windows 8.1</platformName>
+        <browserName>chrome</browserName>
+        <version>49</version>
+        <mobileEmulation>Nexus 5x</mobileEmulation>
+    </node>
+
 </SauceNodes>

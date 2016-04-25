@@ -9,6 +9,7 @@ class SauceConnector(object):
 
     webNodes = []
     mobileNodes = []
+    mobileWebNodes = []
 
     def __init__(self):
 
@@ -26,3 +27,7 @@ class SauceConnector(object):
             mobileNodes = root.findall(".//node[platform='mobile']")
             for node in mobileNodes:
                 self.mobileNodes.append(SauceMobile(node))
+
+            mobileWebNodes = root.findall(".//node[platform='mobileWeb']")
+            for node in mobileWebNodes:
+                self.mobileWebNodes.append(SauceWeb(node))

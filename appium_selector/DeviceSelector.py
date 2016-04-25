@@ -171,7 +171,7 @@ class DeviceSelector:
                 elif self.platform == 'mobile':
                     nodes = self.grid.mobileNodes + self.sauce.mobileNodes
                 else:
-                    nodes = self.grid.webNodes + self.grid.mobileNodes + self.sauce.webNodes + self.sauce.mobileNodes
+                    nodes = self.grid.webNodes + self.grid.mobileNodes + self.sauce.webNodes + self.sauce.mobileNodes + self.sauce.mobileWebNodes
             output=[]
             for node in nodes:
                 if re.search(filter, node.displayString()):
