@@ -126,6 +126,10 @@ class DeviceSelector:
             webData.append(node)
             self.listboxDesktop.insert(END, node.displayString())
 
+        sauceNodes = self.sauce.mobileWebNodes
+        for node in sauceNodes:
+            webData.append(node)
+            self.listboxDesktop.insert(END, node.displayString())
 
         mcNodes = self.mc.webNodes
         for node in mcNodes:
@@ -171,7 +175,7 @@ class DeviceSelector:
                 elif self.platform == 'mobile':
                     nodes = self.grid.mobileNodes + self.sauce.mobileNodes
                 else:
-                    nodes = self.grid.webNodes + self.grid.mobileNodes + self.sauce.webNodes + self.sauce.mobileNodes
+                    nodes = self.grid.webNodes + self.grid.mobileNodes + self.sauce.webNodes + self.sauce.mobileNodes + self.sauce.mobileWebNodes
             output=[]
             for node in nodes:
                 if re.search(filter, node.displayString()):
