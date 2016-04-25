@@ -32,13 +32,16 @@ class GridConnector(object):
             return []
 
     def _parseNodes(self, node):
-        if self._propertyFromTitle('platform', node['title']) not in self.mobilePlatforms:
-            self.webNodes.append(GridWeb(node['title']))
-        elif self._propertyFromTitle('browserName', node['title']) in self.browsers:
-            self.webNodes.append(GridMobileWeb(node['title']))
-        else:
-            self.mobileNodes.append(GridMobile(node['title']))
+        if self._propertyFromTitle('platform', node['title']):
+            if self._propertyFromTitle('platform', node['title']) not in self.mobilePlatforms:
+                self.webNodes.append(GridWeb(node['title']))
+            elif self._propertyFromTitle('browserName', node['title']) in self.browsers:
+                self.webNodes.append(GridMobileWeb(node['title']))
+            else:
+                self.mobileNodes.append(GridMobile(node['title']))
 
     def _propertyFromTitle(self, property, title):
-        return re.search(property + '=.*?[}|,]', title).group().split('=')[1].replace('}','').replace(',','')
-
+        try:
+            return re.search(property + '=.*?[}|,]', title).group().split('=')[1].replace('}','').replace(',','')
+        except:
+            return False
