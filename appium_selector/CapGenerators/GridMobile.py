@@ -26,8 +26,13 @@ class GridMobile(Caps):
         self.options['mustard'] = mustard
         self.options['deviceName'] = self.displayString()
 
-        self.caps['platformName'] = propertyFromString('platform', self.env).capitalize()
+
         #self.caps['browserName'] = self.device['udid']
+        if propertyFromString('platform', self.env).capitalize() == 'Mac':
+            platform = 'IOS'
+        else:
+            platform = propertyFromString('platform', self.env).capitalize()
+        self.caps['platformName'] = platform
         self.caps['applicationName'] =  self.device['udid']
         self.caps['udid'] = self.device['udid']
         self.caps['deviceName'] = self.device['name']
