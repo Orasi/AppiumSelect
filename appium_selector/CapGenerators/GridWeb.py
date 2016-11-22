@@ -29,4 +29,6 @@ class GridWeb(Caps):
         self.caps['version'] = propertyFromString('version', self.env)
         if self.caps['browserName'].lower() == 'firefox' and int(self.caps['version']) >= 47:
             self.caps['marionette'] = True
+        else:
+            self.caps['marionette'] = False
         return {'desiredCaps': self.caps, 'options': self.options}

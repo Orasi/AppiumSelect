@@ -4,7 +4,7 @@ from appium_selector.Helpers.Config import GetConfig
 
 class LocalConnector(object):
 
-    localWeb = ['ie', 'chrome', 'firefox', 'safari']
+    localWeb = ['ie', 'chrome', 'firefox', 'safari', 'firefox:marionette']
     webNodes = []
 
     def __init__(self):
