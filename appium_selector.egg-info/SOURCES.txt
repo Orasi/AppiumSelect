@@ -17,6 +17,7 @@ appium_selector/CapGenerators/LocalWeb.py
 appium_selector/CapGenerators/MCMobile.py
 appium_selector/CapGenerators/MCWeb.py
 appium_selector/CapGenerators/SauceMobile.py
+appium_selector/CapGenerators/SauceMobileWeb.py
 appium_selector/CapGenerators/SauceWeb.py
 appium_selector/CapGenerators/__init__.py
 appium_selector/Helpers/Config.py
