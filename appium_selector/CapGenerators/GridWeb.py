@@ -23,12 +23,14 @@ class GridWeb(Caps):
         self.options['deviceName'] = self.displayString()
 
         self.caps['platformName'] = propertyFromString('platform', self.env)
+        self.caps['platform'] = propertyFromString('platform', self.env)
         self.caps['browserName'] = propertyFromString('browserName', self.env)
         self.caps['udid'] = self.displayString()
         self.caps['deviceName'] = self.displayString()
         self.caps['version'] = propertyFromString('version', self.env)
         if self.caps['browserName'].lower() == 'firefox' and int(self.caps['version']) >= 48:
             self.caps['marionette'] = True
+
         else:
             self.caps['marionette'] = False
         return {'desiredCaps': self.caps, 'options': self.options}

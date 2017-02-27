@@ -16,7 +16,7 @@ class LocalWeb(Caps):
         self.options['manufacturer'] = 'local'
         self.options['model'] = 'local'
         self.options['osv'] = 'Local'
-        self.options['mustard'] = False
+        self.options['mustard'] = mustard
 
         self.caps['platformName'] = 'Local'
         self.caps['browserName'] = 'Local'
