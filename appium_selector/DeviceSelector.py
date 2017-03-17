@@ -193,7 +193,8 @@ class DeviceSelector:
             output = []
             for x in range(len(self.devices)):
                 dc = self.devices[x].desiredCaps(mustard=self.mustard)
-                output.append(dc)
+                if dc not in output:
+                    output.append(dc)
             return output
 
     def _saveDevicesDesktop(self):
