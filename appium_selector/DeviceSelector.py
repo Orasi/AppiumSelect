@@ -171,7 +171,7 @@ class DeviceSelector:
             #mobileNodes = self.grid.mobileNodes
             if self.platform:
                 if self.platform == 'desktop':
-                    nodes = self.grid.webNodes + self.sauce.webNodes + self.sauce.mobileWebNodes
+                    nodes = self.grid.webNodes + self.sauce.webNodes + self.sauce.mobileWebNodes + self.local.webNodes
                 elif self.platform == 'mobile':
                     nodes = self.grid.mobileNodes + self.sauce.mobileNodes
                 else:
