@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
   name = 'appium_selector',
   packages = ['appium_selector', 'appium_selector.Helpers', 'appium_selector.CapGenerators'],
-  version = '1.3.1',
+  version = '1.3.2',
   include_package_data = True,
   description = 'Creates a Tcl/Tk window to read connected Appium devices from Selenium Grid and display them for selection',
   author = 'Matt Watson',
