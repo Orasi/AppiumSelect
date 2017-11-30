@@ -8,6 +8,7 @@ from appium_selector.Helpers.GridConnector import GridConnector
 from appium_selector.Helpers.LocalConnector import LocalConnector
 from appium_selector.Helpers.SauceConnector import SauceConnector
 from appium_selector.Helpers.MCConnector import MCConnector
+from appium_selector.Helpers.AWSConnector import AWSConnector
 
 class DeviceSelector:
 
@@ -18,6 +19,7 @@ class DeviceSelector:
     grid = GridConnector()
     sauce = SauceConnector()
     mc = MCConnector()
+    aws = AWSConnector()
 
     def __init__(self, parallel=False, platform='mobile'):
         self.parallel = parallel
@@ -121,6 +123,16 @@ class DeviceSelector:
                 webData.append(node)
                 self.listboxDesktop.insert(END, ds)
 
+        awsNodes = self.aws.webNodes
+        for node in awsNodes:
+            webData.append(node)
+            self.listboxDesktop.insert(END, node.displayString())
+
+        awsNodes = self.aws.mobileWebNodes
+        for node in awsNodes:
+            webData.append(node)
+            self.listboxDesktop.insert(END, node.displayString())
+
         sauceNodes = self.sauce.webNodes
         for node in sauceNodes:
             webData.append(node)
@@ -171,11 +183,11 @@ class DeviceSelector:
             #mobileNodes = self.grid.mobileNodes
             if self.platform:
                 if self.platform == 'desktop':
-                    nodes = self.grid.webNodes + self.sauce.webNodes + self.sauce.mobileWebNodes + self.local.webNodes
+                    nodes = self.grid.webNodes + self.aws.webNodes + self.aws.mobileWebNodes + self.sauce.webNodes + self.sauce.mobileWebNodes + self.local.webNodes
                 elif self.platform == 'mobile':
                     nodes = self.grid.mobileNodes + self.sauce.mobileNodes
                 else:
-                    nodes = self.grid.webNodes + self.grid.mobileNodes + self.sauce.webNodes + self.sauce.mobileWebNodes
+                    nodes = self.grid.webNodes + self.grid.mobileNodes + self.aws.webNodes + self.aws.mobileWebNodes + self.sauce.webNodes + self.sauce.mobileWebNodes
             output=[]
             for node in nodes:
                 if re.search(filter, node.displayString()):
